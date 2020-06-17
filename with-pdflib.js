@@ -3,13 +3,21 @@ const { PDFDocument, rgb } = require('pdf-lib')
 const fontkit = require('@pdf-lib/fontkit')
 const pingfang = fs.readFileSync('./font/pingfang.ttf')
 
+function toArrayBuffer(buffer){
+    var arrBuffer = new ArrayBuffer(buffer.length)
+    var view = new Uint8Array(arrBuffer)
+    for(let i = 0,len = buffer.length; i < len; i++){
+        view[i] = buffer[i]
+    }
+    return arrBuffer
+}
 
 
 async function embedFontAndMeasureText() {
     const pdfDoc = await PDFDocument.create()
 
     pdfDoc.registerFontkit(fontkit)
-    const customFont = await pdfDoc.embedFont(pingfang,{subset:true})
+    const customFont = await pdfDoc.embedFont(toArrayBuffer(pingfang),{subset:true})
 
     const page = pdfDoc.addPage()
 
@@ -17,6 +25,10 @@ async function embedFontAndMeasureText() {
     const textSize = 35
     const textWidth = customFont.widthOfTextAtSize(text, textSize)
     const textHeight = customFont.heightAtSize(textSize)
+
+    page.drawText(text,{
+        font:customFont
+    })
 
     page.drawText(text, {
         x: 40,
@@ -33,6 +45,7 @@ async function embedFontAndMeasureText() {
         borderColor: rgb(1, 0, 0),
         borderWidth: 1.5,
     })
+
 
     const pdfBytes = await pdfDoc.save()
     fs.writeFileSync('./dist/with-pdflib.pdf',pdfBytes)

@@ -1,0 +1,27 @@
+{
+  "name": "node-pdf-test",
+  "version": "1.0.0",
+  "description": "test for node operate pdf",
+  "main": "min-with-font-carrier.js",
+  "dependencies": {
+    "@pdf-lib/fontkit": "^1.0.0",
+    "font-carrier": "^0.2.0",
+    "pdf-lib": "^1.7.0",
+    "pdfkit": "^0.11.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rawbin-/node-pdf-test.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rawbin-/node-pdf-test/issues"
+  },
+  "homepage": "https://github.com/rawbin-/node-pdf-test#readme"
+}
