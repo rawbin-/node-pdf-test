@@ -6,7 +6,7 @@
   "dependencies": {
     "@pdf-lib/fontkit": "^1.0.0",
     "font-carrier": "^0.2.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "pdf-lib": "^1.7.0",
     "pdfkit": "^0.11.0"
   },
